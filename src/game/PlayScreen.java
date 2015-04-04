@@ -6,8 +6,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 
+
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -117,7 +119,7 @@ public class PlayScreen extends BasicGameState {
 
 
 		if(Mouse.isButtonDown(0)){
-			MouseClicked(Mouse.getX(), container.getHeight() - Mouse.getY(), sbg);
+			MouseClicked(Mouse.getX(), container.getHeight() - Mouse.getY(), sbg, container);
 		}
 
 		blackBeetleAnimation.update(delta);
@@ -296,7 +298,7 @@ public class PlayScreen extends BasicGameState {
 
 	public float getClosestTileCenter(float X){
 
-		return (float) (Math.floor(X / currentMap.getPixelSize() * currentMap.getPixelSize()) + currentMap.getPixelSize() / 2);
+		return (float) (Math.floor(X / currentMap.getPixelSize()) * currentMap.getPixelSize() + currentMap.getPixelSize() / 2);
 	}
 
 	public void createLevelCritterQueue(){
@@ -312,12 +314,15 @@ public class PlayScreen extends BasicGameState {
 	}
 
 
-	private void MouseClicked(int x, int y, StateBasedGame sbg) {
+	private void MouseClicked(int x, int y, StateBasedGame sbg, GameContainer container) throws SlickException {
 		if(ExitButton.contains(x,y)){
 			currentLevel = startingLevel;
 			playerCredits = startingCredits;
 			playerLives = startingLives;
 			waveIsInProgress = false;
+			AppGameContainer gameContainer = (AppGameContainer) container;
+			gameContainer.setDisplayMode(640, 480, false);
+			Mouse.getDX();
 			sbg.enterState(0);
 		}
 

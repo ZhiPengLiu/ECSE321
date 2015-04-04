@@ -7,6 +7,7 @@ import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.MouseListener;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.geom.Rectangle;
@@ -32,6 +33,16 @@ public class EditMapScreen extends BasicGameState {
 
 		
 	}
+	
+	@Override
+	public void update(GameContainer container, StateBasedGame sbg, int delta)
+			throws SlickException {
+		if(Mouse.isButtonDown(0)){
+			MouseClicked(Mouse.getX(), container.getHeight() - Mouse.getY(), sbg,container );
+		}
+		
+	}
+	
 
 	@Override
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g)
@@ -46,18 +57,12 @@ public class EditMapScreen extends BasicGameState {
 		
 	}
 
-	@Override
-	public void update(GameContainer container, StateBasedGame sbg, int delta)
-			throws SlickException {
-		if(Mouse.isButtonDown(0)){
-			MouseClicked(Mouse.getX(), container.getHeight() - Mouse.getY(), sbg);
-		}
-		
-	}
 	
-	public void MouseClicked(int x, int y, StateBasedGame sbg){
-		if(ExitButton.contains(x, y))
+	public void MouseClicked(int x, int y, StateBasedGame sbg, GameContainer container){
+		if(ExitButton.contains(x, y)){
+			Mouse.getDX();
 			sbg.enterState(0);
+		}
 			
 	}
 
