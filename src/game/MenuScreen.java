@@ -46,7 +46,7 @@ public class MenuScreen extends BasicGameState{
 			{
 	
 				if(Mouse.isButtonDown(0)){
-					sbg.enterState(3);
+					sbg.enterState(Game.mapSelectScreen);
 				}
 			}
 		}
@@ -58,11 +58,23 @@ public class MenuScreen extends BasicGameState{
 			{
 	
 				if(Mouse.isButtonDown(0)){
-					sbg.enterState(2);
+					sbg.enterState(Game.editMapScreen);
 				}
 			}
 		}
-		
+
+		if( Mouse.getX() < container.getWidth() -ExitButton.getWidth() && Mouse.getX() > container.getWidth())
+		{
+
+			if( Mouse.getY() > container.getHeight()-ExitButton.getHeight()-2 && Mouse.getY() < container.getHeight() )
+			{
+	
+				if(Mouse.isButtonDown(0)){
+					System.exit(0);
+					
+				}
+			}
+		}
 	}
 
 	@Override
@@ -74,8 +86,8 @@ public class MenuScreen extends BasicGameState{
 		}
 
 		StartGameButton.draw(container.getWidth()/2 -StartGameButton.getWidth()/2, container.getHeight()/3 -StartGameButton.getHeight()/2);
-		EditMapButton.draw(container.getWidth()/2 -EditMapButton.getWidth()/2, 2*container.getHeight()/4 -EditMapButton.getHeight()/2);
-		TowerDefenseTitle.draw(container.getWidth()/2 - TowerDefenseTitle.getWidth()/2, 50 - TowerDefenseTitle.getHeight()/2);
+		EditMapButton.draw(container.getWidth()/2 -EditMapButton.getWidth()/2, container.getHeight()/2 -EditMapButton.getHeight()/2);
+		TowerDefenseTitle.draw(container.getWidth()/2 - TowerDefenseTitle.getWidth()/2, TowerDefenseTitle.getHeight()/2);
 		ExitButton.draw(container.getWidth()-ExitButton.getWidth(), container.getHeight()-ExitButton.getHeight()-2);
 		
 		g.setColor(Color.black);
