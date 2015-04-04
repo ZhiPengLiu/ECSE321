@@ -1,15 +1,11 @@
 package game;
 
 
-
-
-
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
 
 import critters.CritterObserver;
-//test
 
 public class Game extends StateBasedGame {
 
@@ -24,10 +20,10 @@ public class Game extends StateBasedGame {
 	Image EditMapButtonGraphic;
 	CritterObserver gruntObserver;
 
-	private static final int menuScreen = 0;
-	private static final int playScreen = 1;
-	private static final int editMapScreen = 2;
-	private static final int mapSelectScreen =3;
+	public static final int menuScreen = 0;
+	public static final int playScreen = 1;
+	public static final int editMapScreen = 2;
+	public static final int mapSelectScreen =3;
 
 	public Game(String title) {
 		super(title);

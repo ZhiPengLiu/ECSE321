@@ -45,15 +45,57 @@ public class MenuScreen extends BasicGameState{
 		if(Mouse.isButtonDown(0)){
 			mouseClicked(Mouse.getX(),container.getHeight()-Mouse.getY(), sbg);
 
+<<<<<<< HEAD
+=======
+			if( Mouse.getY() > 2*container.getHeight()/3 -StartGameButton.getHeight()/2 && Mouse.getY() < 2*container.getHeight()/3 +StartGameButton.getHeight()/2 )
+			{
+	
+				if(Mouse.isButtonDown(0)){
+					sbg.enterState(Game.mapSelectScreen);
+				}
+			}
+>>>>>>> origin/master
 		}
 
 
+<<<<<<< HEAD
+=======
+			if( Mouse.getY() > container.getHeight() -(2*container.getHeight()/4 +EditMapButton.getHeight()/2) && Mouse.getY() < container.getHeight() -(2*container.getHeight()/4 -EditMapButton.getHeight()/2) )
+			{
+	
+				if(Mouse.isButtonDown(0)){
+					sbg.enterState(Game.editMapScreen);
+				}
+			}
+		}
+
+		if( Mouse.getX() < container.getWidth() -ExitButton.getWidth() && Mouse.getX() > container.getWidth())
+		{
+
+			if( Mouse.getY() > container.getHeight()-ExitButton.getHeight()-2 && Mouse.getY() < container.getHeight() )
+			{
+	
+				if(Mouse.isButtonDown(0)){
+					System.exit(0);
+					
+				}
+			}
+		}
+>>>>>>> origin/master
 	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException {
 		drawMapAndOverlay(container);
 
+<<<<<<< HEAD
+=======
+		StartGameButton.draw(container.getWidth()/2 -StartGameButton.getWidth()/2, container.getHeight()/3 -StartGameButton.getHeight()/2);
+		EditMapButton.draw(container.getWidth()/2 -EditMapButton.getWidth()/2, container.getHeight()/2 -EditMapButton.getHeight()/2);
+		TowerDefenseTitle.draw(container.getWidth()/2 - TowerDefenseTitle.getWidth()/2, TowerDefenseTitle.getHeight()/2);
+		ExitButton.draw(container.getWidth()-ExitButton.getWidth(), container.getHeight()-ExitButton.getHeight()-2);
+		
+>>>>>>> origin/master
 		g.setColor(Color.black);
 		g.drawString(authors, 5, container.getHeight()-40);
 	}
